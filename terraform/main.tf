@@ -54,6 +54,12 @@ resource "aws_s3_bucket_public_access_block" "frontend" {
   restrict_public_buckets = false
 }
 
+# Wait for public access block to propagate
+resource "time_sleep" "wait_for_public_access_block" {
+  depends_on = [aws_s3_bucket_public_access_block.frontend]
+  create_duration = "10s"
+}
+
 resource "aws_s3_bucket_website_configuration" "frontend" {
   bucket = aws_s3_bucket.frontend.id
 
@@ -82,7 +88,10 @@ resource "aws_s3_bucket_policy" "frontend" {
     ]
   })
 
-  depends_on = [aws_s3_bucket_public_access_block.frontend]
+  depends_on = [
+    aws_s3_bucket_public_access_block.frontend,
+    time_sleep.wait_for_public_access_block
+  ]
 }
 
 # IAM role for Lambda
