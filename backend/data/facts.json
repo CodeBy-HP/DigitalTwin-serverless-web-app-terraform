@@ -1,0 +1,17 @@
+{
+  "full_name": "Harsh Patel",
+  "name": "Harsh",
+  "current_role": "MLOps Engineer",
+  "location": "Bhopal",
+  "email": "code.by.hp@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/harsh-patel-389593292/",
+  "specialties": ["Hardworking", "Honest", "Fast Learner"],
+  "years_experience": 1,
+  "education": [
+    {
+      "degree": "BTech",
+      "institution": "Sagar Institute of Research and Technology",
+      "year": "2026"
+    }
+  ]
+}
